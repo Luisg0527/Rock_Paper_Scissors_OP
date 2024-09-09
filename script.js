@@ -6,17 +6,20 @@ humanScore = 0;
 computerScore = 0;
 round = 1;
 
+const humanScoreDisplay = document.querySelector("#humanScore");
+const computerScoreDisplay = document.querySelector("#computerScore");
+
 function playGame(humanChoice) {
     let computerChoice;
     if (round < 5) {
         computerChoice = getComputerChoice();
-        console.log("Round " + round);
+        //console.log("Round " + round);
         playRound(humanChoice, computerChoice);
         round++;
     }
     else if (round == 5) {
         computerChoice = getComputerChoice();
-        console.log("Round " + round);
+        //console.log("Round " + round);
         playRound(humanChoice, computerChoice);
         if(computerScore > humanScore) {
             console.log("Computer wins the game!!!");
@@ -41,19 +44,26 @@ function playRound(humanChoice, computerChoice) {
     if(humanChoice == computerChoice) {
         humanScore++;
         computerScore++;
+
         console.log("Draw!\nYou: " + humanScore + " Computer: " + computerScore);
+        humanScoreDisplay.textContent = "Score " + humanScore;
+        computerScoreDisplay.textContent = "Score " + computerScore;
     }
     else if((humanChoice == 0 && computerChoice == 2) || 
     (humanChoice == 1 && computerChoice == 0) || 
     (humanChoice == 2 && computerChoice == 1)) {
         humanScore++;
         console.log("You win the round!\nYou: " + humanScore + " Computer: " + computerScore);
+        humanScoreDisplay.textContent = "Score " + humanScore;
+        computerScoreDisplay.textContent = "Score " + computerScore;
     }
     else if((humanChoice == 0 && computerChoice == 1) ||
     (humanChoice == 1 && computerChoice == 2) ||
     (humanChoice == 2 && computerChoice == 0)) {
         computerScore++;
         console.log("The computer wins the round!\nYou: " + humanScore + " Computer: " + computerScore);
+        humanScoreDisplay.textContent = "Score " + humanScore;
+        computerScoreDisplay.textContent = "Score " + computerScore;
     }
 
 }
