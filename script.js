@@ -1,54 +1,40 @@
 // Rock, paper, scissors
 // Luis Garza Gómez
 
-let humanScore, computerScore;
+let humanScore, computerScore, round;
 humanScore = 0;
 computerScore = 0;
+round = 1;
 
-playGame();
-
-function playGame() {
-    let humanChoice, computerChoice;
-    for (let i = 1; i <= 5; i++) {
+function playGame(humanChoice) {
+    let computerChoice;
+    if (round < 5) {
         computerChoice = getComputerChoice();
-        humanChoice = getHumanChoice();
-        console.log("Round " + i);
+        console.log("Round " + round);
         playRound(humanChoice, computerChoice);
+        round++;
     }
-
-    if(computerScore > humanScore) {
-        console.log("Computer wins the game!!!");
-    }
-    else if(humanScore > computerScore) {
-        console.log("Congratulations. You win the game!!!");
-    }
-    else {
-        console.log("It's a Draw!!!");
+    else if (round == 5) {
+        computerChoice = getComputerChoice();
+        console.log("Round " + round);
+        playRound(humanChoice, computerChoice);
+        if(computerScore > humanScore) {
+            console.log("Computer wins the game!!!");
+        }
+        else if(humanScore > computerScore) {
+            console.log("Congratulations. You win the game!!!");
+        }
+        else {
+            console.log("It's a Draw!!!");
+        }
+        humanScore = 0;
+        computerScore = 0;
+        round = 1;
     }
 }
 // Function to get the computer's choice
 function getComputerChoice() {
     return Math.floor(Math.random() * 3);
-}
-// Function to get the human's choice
-function getHumanChoice() {
-    let strOption = prompt("Choose: Rock, Paper, or Scissors");
-    let strOption2 = strOption.toLocaleLowerCase();
-    let option = -1;
-    switch (strOption2) {
-        case "rock":
-            option = 0;
-            break;
-        case "paper":
-            option = 1;
-            break;
-        case "scissors":
-            option = 2;
-            break;
-        default:
-            break;
-    }
-    return option;
 }
 
 function playRound(humanChoice, computerChoice) {
@@ -72,17 +58,15 @@ function playRound(humanChoice, computerChoice) {
 
 }
 
-// UI
-
 const rockBtn = document.querySelector("#rockBtn");
 rockBtn.addEventListener("click", () => {
-    option = 0;
-});
+    playGame(0);
+});    
 const paperBtn = document.querySelector("#paperBtn");
-rockBtn.addEventListener("click", () => {
-    option = 1;
+paperBtn.addEventListener("click", () => {
+    playGame(1);
 });
 const scissorBtn = document.querySelector("#scissorsBtn");
-rockBtn.addEventListener("click", () => {
-    option = 2;
+scissorBtn.addEventListener("click", () => {
+    playGame(2);
 });
