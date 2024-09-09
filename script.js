@@ -71,3 +71,18 @@ function playRound(humanChoice, computerChoice) {
     }
 
 }
+
+// UI
+
+const rockBtn = document.querySelector("#rockBtn");
+rockBtn.addEventListener("click", () => {
+    option = 0;
+});
+const paperBtn = document.querySelector("#paperBtn");
+rockBtn.addEventListener("click", () => {
+    option = 1;
+});
+const scissorBtn = document.querySelector("#scissorsBtn");
+rockBtn.addEventListener("click", () => {
+    option = 2;
+});
