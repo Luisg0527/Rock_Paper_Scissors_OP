@@ -23,7 +23,9 @@ function playGame(humanChoice) {
         computerChoice = getComputerChoice();
         //console.log("Round " + round);
         playRound(humanChoice, computerChoice);
-        h2Message.style.cssText = "color: yellow";
+        h2Message.style.cssText = "color: #e9d036";
+        h2Message.style.fontFamily = "texgyretermes-italic";
+        h2Message.style.fontStyle = "italic";
         if(computerScore > humanScore) {
             console.log("Computer wins the game!!!");
             h2Message.textContent = "Computer wins the game!!!";
@@ -48,7 +50,8 @@ function getComputerChoice() {
 }
 
 function playRound(humanChoice, computerChoice) {
-    h2Message.style.cssText = "color: black";
+    h2Message.style.fontFamily = "Aileron-Regular, sans-serif";
+    h2Message.style.cssText = "color: #fefbf6";
     if(humanChoice == computerChoice) {
         humanScore++;
         computerScore++;
